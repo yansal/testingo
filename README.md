@@ -13,7 +13,20 @@ It's OK to use private names inside unit tests.
     PASS
     ok  	github.com/yansal/testingo	0.001s
 
-Names defined in `*_test.go` files are not included in the build: e.g. `TestPrivate` is not present in the output.
+Quoting from https://golang.org/cmd/go/: `When compiling packages, build ignores files that end in '_test.go'`.
+
+Quoting from https://golang.org/pkg/testing/: `The file will be excluded from regular package builds`.
+
+Note that `*_test.go` files are excluded from the compile command.
+
+    $ go build -x github.com/yansal/testingo
+    WORK=/var/folders/lc/ly7d57k1023569jxb4y2kq200000gn/T/go-build535115465
+    mkdir -p $WORK/github.com/yansal/testingo/_obj/
+    mkdir -p $WORK/github.com/yansal/
+    cd /Users/yann/go/src/github.com/yansal/testingo
+    /usr/local/Cellar/go/1.9/libexec/pkg/tool/darwin_amd64/compile -o $WORK/github.com/yansal/testingo.a -trimpath $WORK -goversion go1.9 -p github.com/yansal/testingo -complete -buildid 67bb8f6c70ff508a9fa1121d4edbb3f3840b2a94 -D _/Users/yann/go/src/github.com/yansal/testingo -I $WORK -pack ./testingo.go
+
+Note that names defined in `*_test.go` files are not included in the build: e.g. `TestPrivate` is not present in the `nm`'s output.
 
     $ go install github.com/yansal/testingo && go tool nm $GOPATH/pkg/darwin_amd64/github.com/yansal/testingo.a
          U 
@@ -53,6 +66,5 @@ Names defined in `*_test.go` files are not included in the build: e.g. `TestPriv
      81d R type.interface {}
          U type.string
 
-Quoting from https://golang.org/cmd/go/: `When compiling packages, build ignores files that end in '_test.go'`.
 
-Quoting from https://golang.org/pkg/testing/: `The file will be excluded from regular package builds`.
+
