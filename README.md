@@ -17,7 +17,7 @@ Quoting from https://golang.org/cmd/go/: `When compiling packages, build ignores
 
 Quoting from https://golang.org/pkg/testing/: `The file will be excluded from regular package builds`.
 
-Note that `*_test.go` files are excluded from the compile command.
+Note that `*_test.go` files are not present in the compile command.
 
     $ go build -x github.com/yansal/testingo
     WORK=/var/folders/lc/ly7d57k1023569jxb4y2kq200000gn/T/go-build535115465
