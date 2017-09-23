@@ -53,4 +53,6 @@ Names defined in `*_test.go` files are not included in the build: e.g. `TestPriv
      81d R type.interface {}
          U type.string
 
+Quoting from https://golang.org/cmd/go/: `When compiling packages, build ignores files that end in '_test.go'`.
+
 Quoting from https://golang.org/pkg/testing/: `The file will be excluded from regular package builds`.
