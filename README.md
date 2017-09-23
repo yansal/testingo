@@ -26,7 +26,7 @@ Note that `*_test.go` files are excluded from the compile command.
     cd /Users/yann/go/src/github.com/yansal/testingo
     /usr/local/Cellar/go/1.9/libexec/pkg/tool/darwin_amd64/compile -o $WORK/github.com/yansal/testingo.a -trimpath $WORK -goversion go1.9 -p github.com/yansal/testingo -complete -buildid 67bb8f6c70ff508a9fa1121d4edbb3f3840b2a94 -D _/Users/yann/go/src/github.com/yansal/testingo -I $WORK -pack ./testingo.go
 
-Note that names defined in `*_test.go` files are not included in the build: e.g. `TestPrivate` is not present in the `nm`'s output.
+Note that names defined in `*_test.go` files are not included in the build e.g. `TestPrivate` is not present in `nm`'s output.
 
     $ go install github.com/yansal/testingo && go tool nm $GOPATH/pkg/darwin_amd64/github.com/yansal/testingo.a
          U 
